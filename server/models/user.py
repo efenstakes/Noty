@@ -3,8 +3,8 @@ import datetime
 
 
 class User(mongoengine.Document):
-    name = mongoengine.StringField( required=True, max_length=50 )
-    email = mongoengine.EmailField( required=True, max_length=50 )
+    name = mongoengine.StringField( required=True, unique=True, max_length=50 )
+    email = mongoengine.EmailField( required=True, unique=True, max_length=50 )
     password = mongoengine.StringField( required=True )
     joined_on = mongoengine.DateTimeField( default=datetime.datetime.utcnow )
 

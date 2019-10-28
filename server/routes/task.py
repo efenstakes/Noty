@@ -7,18 +7,35 @@ from models.user import User
 
 ## add
 class TaskAdd(Resource):
+    parser = reqparse.RequestParser()
+    parser.add_argument('title', type=str, required=True, help='Task title should be provided')
+    parser.add_argument('body', type=str, required=True, help='Task description should be provided')
+    parser.add_argument('start_on', type=str, required=True, help='Start date should be provided')
+    parser.add_argument('ends_on', type=str, required=True, help='End date should be provided')
+    parser.add_argument('participants', type=list, required=True, help='Participants should be provided')
 
     def post(self):
         responze = { 'saved': False, 'id': None }
 
+        # get request data
+        data = self.parser.parse_args()
 
         return responze
 
 ## update
 class TaskUpdate(Resource):
+    parser = reqparse.RequestParser()
+    parser.add_argument('title', type=str, required=True, help='Task title should be provided')
+    parser.add_argument('body', type=str, required=True, help='Task description should be provided')
+    parser.add_argument('start_on', type=str, required=True, help='Start date should be provided')
+    parser.add_argument('ends_on', type=str, required=True, help='End date should be provided')
+    parser.add_argument('participants', type=list, required=True, help='Participants should be provided')
 
     def put(self, id):
         responze = { 'updated': False }
+
+        # get request data
+        data = self.parser.parse_args()
 
         return responze
 
@@ -59,13 +76,23 @@ class TaskComplete(Resource):
 
 ## add or delete participants
 class TaskParticipants(Resource):
+    parser = reqparse.RequestParser()
+    parser.add_argument('participants', type=list, required=True, help='Participants should be provided')
 
     def post(self, id):
         responze = { 'saved': False, 'id': None }
+
+        # get request data
+        data = self.parser.parse_args()
+
 
         return responze
 
     def delete(self, id):
         responze = { 'deleted': False }
 
+        # get request data
+        data = self.parser.parse_args()
+
+        
         return responze

@@ -8,7 +8,7 @@ class Task(mongoengine.Document):
     starts_on = mongoengine.DateTimeField( default=None )
     ends_on = mongoengine.DateTimeField( default=None )
     is_complete = mongoengine.BooleanField( default=False )
-    participants = mongoengine.ListField( mongoengine.StringField() )
+    participants = mongoengine.ListField( mongoengine.EmailField() )
     # user = mongoengine.ReferenceField('User', reverse_delete_rule=mongoengine.CASCADE)
     added_on = mongoengine.DateTimeField( default = datetime.datetime.utcnow )
 
