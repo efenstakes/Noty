@@ -2,6 +2,7 @@ import mongoengine
 import datetime
 
 
+
 class Task(mongoengine.Document):
     title = mongoengine.StringField( max_length=100 )
     body = mongoengine.StringField()
@@ -9,7 +10,7 @@ class Task(mongoengine.Document):
     ends_on = mongoengine.DateTimeField( default=None )
     is_complete = mongoengine.BooleanField( default=False )
     participants = mongoengine.ListField( mongoengine.EmailField() )
-    # user = mongoengine.ReferenceField('User', reverse_delete_rule=mongoengine.CASCADE)
+    user = mongoengine.ReferenceField('User', reverse_delete_rule=mongoengine.CASCADE)
     added_on = mongoengine.DateTimeField( default = datetime.datetime.utcnow )
 
     ## define document name
