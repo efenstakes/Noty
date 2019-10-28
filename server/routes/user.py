@@ -1,6 +1,10 @@
 from flask_restful import Resource, reqparse
 from werkzeug.security import generate_password_hash
 import mongoengine
+import datetime
+from flask_jwt_extended import (
+    jwt_required, current_user, create_access_token
+)
 
 ## import app models
 from models import User, Task
@@ -39,6 +43,7 @@ class UserAdd(Resource):
 ## get user details
 class UserDetails(Resource):
     
+    @jwt_required
     def get(self, id):
         responze = { 'user': {} }
 
@@ -57,6 +62,7 @@ class UserUpdate(Resource):
     parser.add_argument('name', type=str, required=True, help='Name should be provided')
     parser.add_argument('email', type=str, required=True, help='Email should be provided')
 
+    @jwt_required
     def post(self, id):
         responze = { 'updated': False, 'user': {} }
         
@@ -80,6 +86,7 @@ class UserUpdate(Resource):
 ## delete user 
 class UserDelete(Resource):
     
+    @jwt_required
     def delete(self, id):
         responze = { 'deleted': False }
 
@@ -113,12 +120,17 @@ class UserLogin(Resource):
             return responze, 404
 
         responze['user'] = user_schema.dump(user)
+        responze['token'] = create_access_token(
+                                str(user.id),
+                                expires_delta=datetime.timedelta(minutes=59)
+                            )
         return responze
 
 
 ## logout user
 class UserLogout(Resource):
     
+    @jwt_required
     def post(self):
         responze = { 'logged_out': False }
 
@@ -127,6 +139,7 @@ class UserLogout(Resource):
 
 class UserTasks(Resource):
 
+    @jwt_required
     def get(self, id):
         responze = { 'tasks': [] }
 

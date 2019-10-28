@@ -14,6 +14,7 @@ app.config.from_object('config.Config')
 ma = Marshmallow(app)
 jwt = JWTManager(app)
 
+
 ## connect to mongo
 mongoengine.connect('Noty-Test', host='localhost', port=27017)
 
@@ -29,3 +30,6 @@ app.register_blueprint(api_bp, url_prefix='/api')
 @app.errorhandler(401)
 def not_found(e):
     return { 'error': 'Bad route' }, 404
+
+## import jwt auth module
+import auth
