@@ -1,8 +1,11 @@
 from flask_restful import Resource, reqparse
 
 ## import app models
-from models.task import Task
-from models.user import User
+from models import User, Task
+
+
+## import app serializer/deserializers
+from schemas import user_schema, users_schema, task_schema, tasks_schema
 
 
 ## add
@@ -94,5 +97,5 @@ class TaskParticipants(Resource):
         # get request data
         data = self.parser.parse_args()
 
-        
+
         return responze

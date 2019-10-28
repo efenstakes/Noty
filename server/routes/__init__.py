@@ -9,7 +9,8 @@ api = Api(api_bp)
 
 ## import app resources and hook them to the blueprint
 from .user import (
-    UserAdd, UserDetails, UserUpdate, UserDelete, UserLogin, UserLogout
+    UserAdd, UserDetails, UserUpdate, UserDelete, UserLogin, 
+    UserLogout, UserTasks
 )
 from .task import (
     TaskAdd, TaskUpdate, TaskComplete, TaskDelete, TaskDetail, 
@@ -22,6 +23,7 @@ api.add_resource(UserAdd, '/account')
 api.add_resource(UserDetails, '/account/<id>')
 api.add_resource(UserUpdate, '/account/<id>')
 api.add_resource(UserDelete, '/account/<id>')
+api.add_resource(UserTasks, '/account/<id>/tasks')
 api.add_resource(UserLogin, '/account/login')
 api.add_resource(UserLogout, '/account/logout')
 
