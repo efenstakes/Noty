@@ -1,6 +1,8 @@
 from flask import Flask, Blueprint
 from flask_marshmallow import Marshmallow
 from flask_jwt_extended import JWTManager
+import mongoengine
+
 
 ## create app instance
 app = Flask(__name__, instance_relative_config=True)
@@ -11,6 +13,9 @@ app.config.from_object('config.Config')
 ## create app serializer
 ma = Marshmallow(app)
 jwt = JWTManager(app)
+
+## connect to mongo
+mongoengine.connect('Noty-Test', host='localhost', port=27017)
 
 
 # import application blueprint with routing
