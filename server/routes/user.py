@@ -1,5 +1,8 @@
-from flask_restful import Resource
+from flask_restful import Resource, reqparse
 
+## import app models
+from models.task import Task
+from models.user import User
 
 
 ## add user
@@ -7,6 +10,8 @@ class UserAdd(Resource):
 
     def post(self):
         responze = { 'saved': False, 'id': None }
+        # get request data
+        
 
         return responze
 

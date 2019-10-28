@@ -18,12 +18,12 @@ from .task import (
 
 
 ## create user routes
-api.add_resource(UserAdd, '/user')
-api.add_resource(UserDetails, '/user/<id>')
-api.add_resource(UserUpdate, '/user/<id>')
-api.add_resource(UserDelete, '/user/<id>')
-api.add_resource(UserLogin, '/user/login')
-api.add_resource(UserLogout, '/user/logout')
+api.add_resource(UserAdd, '/account')
+api.add_resource(UserDetails, '/account/<id>')
+api.add_resource(UserUpdate, '/account/<id>')
+api.add_resource(UserDelete, '/account/<id>')
+api.add_resource(UserLogin, '/account/login')
+api.add_resource(UserLogout, '/account/logout')
 
 ## create task routes
 api.add_resource(TaskAdd, '/task')
