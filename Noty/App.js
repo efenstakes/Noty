@@ -11,6 +11,15 @@ import { createMaterialBottomTabNavigator } from 'react-navigation-material-bott
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 
+// app activities
+import SplashScreenActivity from './app/layouts/activities/SplashScreen'
+import TutorialActivity from './app/layouts/activities/Tutorial'
+import LoginActivity from './app/layouts/activities/Login'
+import RegisterActivity from './app/layouts/activities/Register'
+import HomeActivity from './app/layouts/activities/Home'
+import UserProfileActivity from './app/layouts/activities/UserProfile'
+import SettingsActivity from './app/layouts/activities/Settings'
+
 
 
 // app colors
@@ -19,96 +28,6 @@ let secondary_color = '#2cdeea'
 let bottom_navigation_bar_color = '#003F72'
 let active_tab_color = '#00A1DE'
 let inactive_tab_color = '#2cdeea'
-
-
-// splash screen
-const SplashScreenActivity = () => {
-
-  return(
-    <View>
-      <Text> Splash Screen </Text>
-    </View>
-  )
-
-}// const SplashScreenActivity = () => { .. }
-
-
-// Tutorial screen
-const TutorialActivity = () => {
-
-  return(
-    <View>
-      <Text> Tutorial Screen </Text>
-    </View>
-  )
-
-}// const TutorialScreenActivity = () => { .. }
-
-
-// login screen
-const LoginActivity = () => {
-
-  return(
-    <View>
-      <Text> Login Screen </Text>
-    </View>
-  )
-
-}// const LoginActivity = () => { .. }
-
-
-// register screen
-const RegisterActivity = () => {
-
-  return(
-    <View>
-      <Text> register Screen </Text>
-    </View>
-  )
-
-}// const RegisterActivity = () => { .. }
-
-
-// home screen
-class HomeActivity extends React.Component {
-  static navigationOptions = {
-    // header: null, headerLeft: null,
-    title: 'Explore Our Services'
-  }
-  
-  render() {
-    return(
-      <View>
-        <Text> home Screen </Text>
-      </View>
-    )
-  }
-
-}// const HomeActivity = () => { .. }
-
-
-// user profile screen
-const UserProfileActivity = () => {
-
-  return(
-    <View>
-      <Text> user profile Screen </Text>
-    </View>
-  )
-
-}// const UserProfileActivity = () => { .. }
-
-
-// settings screen
-const SettingsActivity = () => {
-
-  return(
-    <View>
-      <Text> settings Screen </Text>
-    </View>
-  )
-
-}// const SettingsActivity = () => { .. }
 
 
 
