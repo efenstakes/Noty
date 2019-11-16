@@ -2,3 +2,6 @@
 server/.vscode
 "server/requirements.txt" 
 server/requirements.txt 
+Noty/node_modules/ 
+/Noty/node_modules/ 
+./Noty/node_modules/ 
