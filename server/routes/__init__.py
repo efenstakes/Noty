@@ -14,7 +14,7 @@ from .user import (
 )
 from .task import (
     TaskAdd, TaskUpdate, TaskComplete, TaskDelete, TaskDetail, 
-    TaskAll, TaskParticipants
+    TaskParticipants
 )
 
 
@@ -33,7 +33,6 @@ api.add_resource(TaskDetail, '/task/<id>')
 api.add_resource(TaskUpdate, '/task/<id>')
 api.add_resource(TaskComplete, '/task/<id>/complete')
 api.add_resource(TaskDelete, '/task/<id>')
-api.add_resource(TaskAll, '/task/<id>')
 api.add_resource(TaskParticipants, '/task/<id>/participants')
 
 

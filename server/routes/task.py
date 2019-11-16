@@ -90,19 +90,6 @@ class TaskDelete(Resource):
         return responze
 
 
-## get all
-class TaskAll(Resource):
-
-    @jwt_required
-    def get(self, id):
-        responze = { 'tasks': [] }
-        
-        tasks = Task(id=id, user=current_user.id)
-
-        responze['tasks'] = tasks
-        return responze
-
-
 ## mark as complete
 class TaskComplete(Resource):
 
