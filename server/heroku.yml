@@ -1,0 +1,24 @@
+
+## app addons and config
+# setup:
+#     addons:
+#         - plan: mongo
+#           as: DATABASE
+#     config:
+#         S3_BUCKET: noty-s3-bucket
+
+## how to build container
+build:
+    docker:
+        web: Dockerfile
+
+## how to run container
+run:
+    web: gunicorn run:app --bind 0.0.0.0:$PORT
+    ## sends server mail
+    # mail-worker: python mail-worker.py
+
+## -- instructions --
+# heroku stack:set container
+# run app
+# git push heroku master

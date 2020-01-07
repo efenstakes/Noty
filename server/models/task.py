@@ -8,7 +8,6 @@ class Task(mongoengine.Document):
     body = mongoengine.StringField( required=True )
     starts_on = mongoengine.DateTimeField( default=None )
     ends_on = mongoengine.DateTimeField( default=None )
-    is_complete = mongoengine.BooleanField( default=False )
     stage = mongoengine.StringField( 
                 choices=('DO', 'DOING', 'DONE'), default='DO' 
         )
