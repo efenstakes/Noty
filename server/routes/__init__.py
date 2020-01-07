@@ -13,7 +13,7 @@ from .user import (
     UserLogout, UserTasks
 )
 from .task import (
-    TaskAdd, TaskUpdate, TaskComplete, TaskDelete, TaskDetail, 
+    TaskAdd, TaskUpdate, TaskStage, TaskDelete, TaskDetail, 
     TaskParticipants
 )
 
@@ -31,7 +31,7 @@ api.add_resource(UserLogout, '/account/logout')
 api.add_resource(TaskAdd, '/task')
 api.add_resource(TaskDetail, '/task/<id>')
 api.add_resource(TaskUpdate, '/task/<id>')
-api.add_resource(TaskComplete, '/task/<id>/complete')
+api.add_resource(TaskStage, '/task/<id>/stage')
 api.add_resource(TaskDelete, '/task/<id>')
 api.add_resource(TaskParticipants, '/task/<id>/participants')
 

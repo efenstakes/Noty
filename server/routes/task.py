@@ -91,7 +91,9 @@ class TaskDelete(Resource):
 
 
 ## mark as complete
-class TaskComplete(Resource):
+class TaskStage(Resource):
+    parser = reqparse.RequestParser()
+    parser.add_argument('stage', type=str, required=True, help='Stage should be provided')
 
     @jwt_required
     def post(self, id):
@@ -99,7 +101,7 @@ class TaskComplete(Resource):
 
         try:
             task = Task(id=id, user=current_user.id).get()
-            task.is_complete = True
+            task.stage = stage
             task.save()
         except:
             return responze, 404
@@ -119,8 +121,16 @@ class TaskParticipants(Resource):
 
         # get request data
         data = self.parser.parse_args()
+        participants = data['participants']
+        try:
+            task = Task.objects(id=id, user=current_user.id).get()
+            task.participants = list(
+                                    set(task.participants.extend(participants))
+                                )
+        except:
+            return responze, 404
 
-
+        responze['saved'] = True
         return responze
 
     @jwt_required
@@ -129,6 +139,14 @@ class TaskParticipants(Resource):
 
         # get request data
         data = self.parser.parse_args()
+        participants_to_remove = data['participants']
+        try:
+            task = Task.objects(id=id, user=current_user.id).get()
+            task.participants = [
+                participant for task.participants if participant not in participants_to_remove
+            ]
+        except:
+            return responze, 404
 
-
+        responze['deleted'] = True
         return responze
